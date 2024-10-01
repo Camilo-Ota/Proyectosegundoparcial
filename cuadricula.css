@@ -1,0 +1,255 @@
+/* HEADER FIJO */
+#barranavegacion {
+    display: flex;
+    justify-content: space-around;
+}
+
+#barranavegacion h1 {
+    color: orange;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 2px #000;
+    font-family: 'Dancing Script';
+}
+
+#barranavegacion ul {
+    display: flex;
+}
+
+#barranavegacion ul li {
+    list-style: none;
+    padding: 3px 15px 3px 15px;
+}
+
+#barranavegacion ul li:hover {
+    background: orangered;
+    cursor: pointer;
+}
+
+#barranavegacion ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#barranavegacion_celular ul li:hover {
+    background: orangered;
+    cursor: pointer;
+}
+
+#barranavegacion_celular {
+    display: none;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#barranavegacion_celular ul {
+    display: flex;
+    justify-content: center;
+}
+
+#barranavegacion_celular ul li {
+    list-style: none;
+    padding: 0 5px 0 5px;
+}
+
+#barranavegacion_celular ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    #barranavegacion_celular {
+        display: block;
+    }
+    #barranavegacion ul {
+        display: none;
+    }
+    html {
+        font-size: 95%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+/* hasta aqui solo el heather */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    position: relative;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+.menu {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin-bottom: 20px;
+}
+
+.menu h2 {
+    margin-top: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual ancho */
+    grid-template-rows: repeat(3, auto); /* Tres filas automáticas en altura */
+    gap: 50px; /* Espacio entre los elementos de la cuadrícula */
+}
+
+.grid-item {
+    padding: 1em;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #fff; /* Fondo blanco para los ítems */
+    border-radius: 8px; /* Bordes redondeados para los ítems */
+}
+
+.img-container {
+    width: 100%;
+    height: 75%; /* Altura fija para las imágenes */
+    overflow: hidden; /* Oculta el desbordamiento de la imagen */
+    margin-bottom: 10px; /* Espacio debajo de la imagen */
+    border-radius: 8px; /* Bordes redondeados */
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    top: 0;
+    left: 0;
+}
+
+.grid-item h3 {
+    margin-top: 0;
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Bordes redondeados para el botón */
+}
+
+.add-to-cart:hover {
+    background-color: #3e8e41;
+}
+
+.cart {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin-top: 20px;
+}
+
+.cart ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart li {
+    padding: 1em;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart li:last-child {
+    border-bottom: none;
+}
+
+#total-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#checkout {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Bordes redondeados para el botón */
+}
+
+#checkout:hover {
+    background-color: #3e8e41;
+}
+
+/* Responsive design for mobile devices */
+@media only screen and (max-width: 950px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
+    }
+    html {
+        font-size: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr; /* Una columna */
+    }
+    html {
+        font-size: 90%;
+    }
+}
+
+#Equipoquedesarrollo h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.equipo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    gap: 20px; /* Espacio entre los elementos */
+    max-width: 800px; /* Ancho máximo de la galería */
+    margin: 0 auto; /* Centra la galería en la página */
+}
+
+.item {
+    text-align: center; /* Centra el contenido de cada elemento */
+    padding: 10px; /* Añade algo de espacio alrededor de cada item */
+    border-radius: 20px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+}
+
+.item img {
+    max-width: 60%; 
+    height: auto; 
+}
+
+.item h3 {
+    margin: 10px 0 5px 0; /* Espaciado entre el nombre y la imagen */
+    font-size: 1.2em; /* Tamaño de la fuente del nombre */
+}
+
+.item p {
+    font-size: 0.9em; /* Tamaño de la fuente de la descripción */
+    color: #666; 
+    margin: 5px 0; 
+}
