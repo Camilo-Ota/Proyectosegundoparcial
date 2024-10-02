@@ -9,17 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
 
     // Función para obtener los productos desde la API
-    function loadProducts() {
-        fetch('https://script.google.com/macros/s/AKfycbzpKy4zfR03gQGr9bltiVNhOLnrbTKPbFZqKnfV3Fk7qJI42B4QenLv53WIrB6b5Zft/exec') // Reemplaza con la URL de tu API de Google Sheets
-            .then(response => response.json()) // Convertimos la respuesta en JSON
+    function loadProducts(categoria) {
+        fetch('https://script.google.com/macros/s/AKfycbzpKy4zfR03gQGr9bltiVNhOLnrbTKPbFZqKnfV3Fk7qJI42B4QenLv53WIrB6b5Zft/exec')
+            .then(response => response.json())
             .then(data => {
                 const productos = data.data; // Asumimos que los productos están en "data.data"
-                renderProducts(productos); // Renderizamos los productos en la página
+                const filteredProducts = categoria ? productos.filter(producto => producto.Categoria === categoria) : productos;
+                renderProducts(filteredProducts); // Renderizamos los productos filtrados
             })
             .catch(error => console.error('Error al cargar los productos:', error));
     }
 
     function renderProducts(productos) {
+        grid.innerHTML = ''; // Limpiar la grilla antes de renderizar
         productos.forEach(producto => {
             const productElement = document.createElement('div');
             productElement.classList.add('grid-item');
@@ -40,10 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cargar los productos cuando se cargue la página
-    loadProducts();
+    // Función para obtener el parámetro de la URL
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
 
-    
+    // Obtener la categoría de la URL
+    const categoriaActual = getUrlParameter('categoria'); // Cargar la categoría desde la URL
+    loadProducts(categoriaActual); // Cargar productos de la categoría especificada
 
     function updateCartUI() {
         const cart = getCart(); // Obtener el carrito desde localStorage
@@ -59,31 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const total = calculateTotal(cart);
         totalElement.textContent = total;
     }
-    
-    // Asegurarse de actualizar el UI del carrito al cargar la página
+
     document.addEventListener('DOMContentLoaded', () => {
         updateCartUI();
     });
-    
 
     function calculateTotal(cart) {
         return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     }
 
-    // Mostrar el carrito al hacer clic en el ícono
     cartIcon.addEventListener('click', () => {
         cartWindow.classList.toggle('show');
         cartWindow.classList.toggle('hidden');
         updateCartUI();
     });
 
-    // Cerrar el carrito
     closeCartButton.addEventListener('click', () => {
         cartWindow.classList.add('hidden');
         cartWindow.classList.remove('show');
     });
 
-    // Agregar listener para agregar elementos al carrito
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('add-to-cart')) {
             const item = {
@@ -95,9 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCartUI();
         }
     });
-    
 
-    // Agregar listener para eliminar elementos del carrito
     cartElement.addEventListener('click', (e) => {
         if (e.target.classList.contains('remove-from-cart')) {
             const item = {

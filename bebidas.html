@@ -11,68 +11,38 @@
     <header>
         <div id="header">
             <nav id="barranavegacion">
-                <h1> UrbanBites</h1>
+                <h1>UrbanBites</h1>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="entradas.html">Entradas</a></li>
-                    <li><a href="principales.html">Platos Principales</a></li>
-                    <li><a href="bebidas.html">Bebidas</a></li>
-                    <li><a href="postres.html">Postres</a></li>
+                    <li><a href="entradas.html?categoria=entradas">Entradas</a></li>
+                    <li><a href="principales.html?categoria=principales">Platos Principales</a></li>
+                    <li><a href="bebidas.html?categoria=bebidas">Bebidas</a></li>
+                    <li><a href="postres.html?categoria=postres">Postres</a></li>
                     <li><a href="equipo.html">Equipo desarrollador</a></li>
                 </ul>
+                <div id="cart-icon" style="cursor: pointer;">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                    </svg>
+                </div>
             </nav>
-
-            <div id="cart-icon" style="cursor: pointer;">
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-                </svg>
-            </div>
-
-            
             <div id="barranavegacion_celular">
-                  <ul>
+                <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="entradas.html">Entradas</a></li>
-                    <li><a href="principales.html">Platos Principales</a></li>
-                    <li><a href="bebidas.html">Bebidas</a></li>
-                    <li><a href="postres.html">Postres</a></li>
+                    <li><a href="entradas.html?categoria=entradas">Entradas</a></li>
+                    <li><a href="principales.html?categoria=principales">Platos Principales</a></li>
+                    <li><a href="bebidas.html?categoria=bebidas">Bebidas</a></li>
+                    <li><a href="postres.html?categoria=postres">Postres</a></li>
                     <li><a href="equipo.html">Equipo desarrollador</a></li>
                 </ul>
-    
             </div>
         </div>
     </header>
     <main>
         <section class="menu">
-            <h2>Entradas</h2>
+            <h2>bebbidas</h2>
             <div class="grid">
-                <div class="grid-item">
-                    <div class="img-container">
-                        <img src="./imagenes/limonada.JPG" alt="limonada">
-                    </div>
-                    <h3>Limonada</h3>
-                    <p>Limonada dulce fría</p>
-                    <p>$3.000</p>
-                    <button class="add-to-cart" data-id="13" data-name="Limonada" data-price="3000">Añadir al carrito</button>
-                </div>
-                <div class="grid-item">
-                    <div class="img-container">
-                        <img src="./imagenes/coca-cola.JPG" alt="coca cola">
-                    </div>
-                    <h3>Coca cola</h3>
-                    <p>Gaseosa Coca cola de 400ml</p>
-                    <p>$3.800</p>
-                    <button class="add-to-cart" data-id="14" data-name="CocaCola" data-price="3800">Añadir al carrito</button>
-                </div>
-                <div class="grid-item">
-                    <div class="img-container">
-                        <img src="./imagenes/cerveza.jpg" alt="cerveza poker">
-                    </div>
-                    <h3>Cerveza</h3>
-                    <p>Cerveza poker en lata</p>
-                    <p>$5.000</p>
-                    <button class="add-to-cart" data-id="15" data-name="Cerveza" data-price="5000">Añadir al carrito</button>
-                </div>
+                <!-- Los productos se cargarán aquí -->
             </div>
         </section>
 
@@ -80,19 +50,15 @@
             <div id="cart">
                 <h2>Carrito de compras</h2>
                 <div id="cart-items">
-                    
+                    <!-- Los elementos del carrito se cargarán aquí -->
                 </div>
                 <div id="cart-total">
-                    <div id="cart-total">
-                        <p><strong>Total</strong></p>
-                        <p id="total-amount">$0</p>
-                    </div>
-                    
+                    <p><strong>Total</strong></p>
+                    <p id="total-amount">$0</p>
                 </div>
                 <button id="close-cart">Cerrar</button>
             </div>
         </div>
-
     </main>
     <script src="script.js"></script>
     <script src="cart.js"></script>
