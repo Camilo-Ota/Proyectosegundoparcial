@@ -4,20 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartWindow = document.getElementById('cart-window');
     const cartIcon = document.getElementById('cart-icon');
     const closeCartButton = document.getElementById('close-cart');
-    const grid = document.querySelector('.grid'); // Selecciona la grilla donde se agregarán los productos
+    const grid = document.querySelector('.grid'); 
 
     updateCartUI();
 
-    // Función para obtener los productos desde la API
-    function loadProducts(categoria) {
-        fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec')
-            .then(response => response.json())
-            .then(data => {
-                const productos = data.data; // Asumimos que los productos están en "data.data"
-                const filteredProducts = categoria ? productos.filter(producto => producto.Categoria === categoria) : productos;
-                renderProducts(filteredProducts); // Renderizamos los productos filtrados
-            })
-            .catch(error => console.error('Error al cargar los productos:', error));
+    // Función para obtener los productos desde la API usando async/await
+    async function loadProducts(categoria) {
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec');
+            const data = await response.json(); //Conversión a JSON
+            const productos = data.data; // Asumimos que los productos están en "data.data"
+            const filteredProducts = categoria ? productos.filter(producto => producto.Categoria === categoria) : productos;
+            renderProducts(filteredProducts); // Mostrar los productos filtrados
+        } catch (error) {
+            console.error('Error al cargar los productos:', error);
+        }
     }
 
     function renderProducts(productos) {
@@ -141,15 +142,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Integración del formulario de pedido
-    document.getElementById('pedido-form').addEventListener('submit', function(event) {
+    document.getElementById('pedido-form').addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        // Capturar datos del cliente
+        // Captura datos del cliente
         const nombreCliente = document.getElementById('nombre').value;
         const telefonoCliente = document.getElementById('telefono').value;
         const direccionCliente = document.getElementById('direccion').value;
 
-        // Obtener los productos desde el carrito
+        // Obtiene los productos desde el carrito
         const productos = getCart().map(item => ({
             id: item.id,
             precio: parseFloat(item.price),
@@ -168,25 +169,25 @@ document.addEventListener('DOMContentLoaded', () => {
             valorTotal: valorTotal
         };
 
-        // Enviar el pedido a la API de Google Sheets
-        fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec', {
-            method: 'POST',
-            body: JSON.stringify(pedido),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            mode: 'no-cors' // Agregar el modo 'no-cors'
-        })
-        .then(response => {
+        // Enviar el pedido a la API con async/await
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec', {
+                method: 'POST',
+                body: JSON.stringify(pedido),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'no-cors' // Agregar el modo 'no-cors'
+            });
+
             console.log('Pedido enviado');
             alert('Pedido enviado exitosamente');
             clearCart(); // Limpiar el carrito después de enviar el pedido
             updateCartUI(); // Actualizar la interfaz
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error al enviar el pedido:', error);
             alert('Error al enviar el pedido');
-        });
+        }
         
     });
 
