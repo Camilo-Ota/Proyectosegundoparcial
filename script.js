@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para obtener los productos desde la API
     function loadProducts(categoria) {
-        fetch('https://script.google.com/macros/s/AKfycbzpKy4zfR03gQGr9bltiVNhOLnrbTKPbFZqKnfV3Fk7qJI42B4QenLv53WIrB6b5Zft/exec')
+        fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec')
             .then(response => response.json())
             .then(data => {
                 const productos = data.data; // Asumimos que los productos están en "data.data"
@@ -64,12 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cartElement.appendChild(cartItem);
         });
         const total = calculateTotal(cart);
-        totalElement.textContent = total;
+        totalElement.textContent = `$${total}`;
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        updateCartUI();
-    });
 
     function calculateTotal(cart) {
         return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -107,4 +103,96 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCartUI();
         }
     });
+
+    // Funciones de carrito ya existentes
+    function addToCart(item) {
+        const cart = getCart(); // Obtener el carrito desde localStorage
+        let itemExists = false;
+
+        // Verificar si el item ya existe en el carrito
+        cart.forEach(cartItem => {
+            if (cartItem.id === item.id) {
+                cartItem.quantity += 1; // Incrementar la cantidad si ya existe
+                itemExists = true;
+            }
+        });
+
+        if (!itemExists) {
+            item.quantity = 1; // Establecer la cantidad inicial a 1
+            cart.push(item); // Agregar el nuevo item al carrito
+        }
+
+        // Guardar el carrito actualizado en localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function getCart() {
+        const cart = localStorage.getItem('cart');
+        return cart ? JSON.parse(cart) : [];
+    }
+
+    function removeFromCart(item) {
+        let cart = getCart(); // Obtener el carrito desde localStorage
+        cart = cart.filter(cartItem => cartItem.id !== item.id);
+
+        // Guardar el carrito actualizado en localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Integración del formulario de pedido
+    document.getElementById('pedido-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Capturar datos del cliente
+        const nombreCliente = document.getElementById('nombre').value;
+        const telefonoCliente = document.getElementById('telefono').value;
+        const direccionCliente = document.getElementById('direccion').value;
+
+        // Obtener los productos desde el carrito
+        const productos = getCart().map(item => ({
+            id: item.id,
+            precio: parseFloat(item.price),
+            cantidad: item.quantity
+        }));
+
+        // Calcular el valor total del pedido
+        const valorTotal = calculateTotal(getCart());
+
+        // Crear objeto de pedido
+        const pedido = {
+            nombre: nombreCliente,
+            telefono: telefonoCliente,
+            direccion: direccionCliente,
+            productos: productos,
+            valorTotal: valorTotal
+        };
+
+        // Enviar el pedido a la API de Google Sheets
+        fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec', {
+            method: 'POST',
+            body: JSON.stringify(pedido),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'no-cors' // Agregar el modo 'no-cors'
+        })
+        .then(response => {
+            console.log('Pedido enviado');
+            alert('Pedido enviado exitosamente');
+            clearCart(); // Limpiar el carrito después de enviar el pedido
+            updateCartUI(); // Actualizar la interfaz
+        })
+        .catch(error => {
+            console.error('Error al enviar el pedido:', error);
+            alert('Error al enviar el pedido');
+        });
+        
+    });
+
+    // Función para vaciar el carrito
+    function clearCart() {
+        localStorage.removeItem('cart'); // Vaciar el carrito en localStorage
+        cartElement.innerHTML = ''; // Limpiar el carrito en la UI
+        totalElement.textContent = '$0';
+    }
 });
