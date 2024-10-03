@@ -57,9 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cartElement.innerHTML = '';
         cart.forEach((item) => {
             const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item'); // Clase para el elemento del carrito
             cartItem.innerHTML = `
                 <p>${item.name} - $${item.price} x ${item.quantity}</p>
-                <button class="remove-from-cart" data-id="${item.id}">Eliminar</button>
+                <button class="remove-from-cart button-remove" data-id="${item.id}">Eliminar</button>
             `;
             cartElement.appendChild(cartItem);
         });

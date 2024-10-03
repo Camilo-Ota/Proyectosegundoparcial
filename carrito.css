@@ -1,4 +1,3 @@
-/* Estilos básicos para la ventana emergente del carrito */
 #cart-window {
     position: fixed;
     top: 0;
@@ -26,7 +25,6 @@
     transform: translateX(0);
 }
 
-/* Icono del carrito en la esquina superior derecha */
 #cart-icon {
     position: fixed;
     top: 20px;
@@ -49,23 +47,6 @@
     background-color: #d47120;
 }
 
-/* Botón para cerrar el carrito */
-#close-cart {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-}
-
-#close-cart:hover {
-    background-color: #e25454;
-}
-
 /* Contenedor de los items del carrito */
 #cart-items {
     flex-grow: 1;
@@ -83,23 +64,16 @@
     border-radius: 3px;
 }
 
-/* Estilo de los elementos dentro del carrito */
+/* Elementos del carrito */
 .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: #ffffff33;
     padding: 12px;
     margin-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-.cart-item img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 8px;
 }
 
 .cart-item-info {
@@ -116,25 +90,6 @@
 .cart-item-price {
     font-size: 0.9rem;
     color: #777;
-}
-
-.cart-item-remove {
-    background-color: #ff6b6b;
-    border: none;
-    color: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-}
-
-.cart-item-remove:hover {
-    background-color: #e25454;
 }
 
 /* Total del carrito */
@@ -161,4 +116,61 @@
 
 #checkout:hover {
     background-color: #388E3C;
+}
+
+#pedido-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 20px 0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#pedido-form input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#pedido-form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#pedido-form button:hover {
+    background-color: #327435;
+}
+
+/*Botón de eliminar*/
+.button-remove {
+    background-color: #ff9d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.button-remove:hover {
+    background-color: #e07d2c; 
+}
+
+/* Botón de cerrar*/
+#close-cart {
+    background-color: #ff9d4d; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+
+#close-cart:hover {
+    background-color: #e07d2c; 
 }
