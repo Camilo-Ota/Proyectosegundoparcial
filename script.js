@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartWindow.classList.toggle('hidden');
         updateCartUI();
     });
-
+ // addEventListener se encarga de permitir la interaccion con el click
     closeCartButton.addEventListener('click', () => {
         cartWindow.classList.add('hidden');
         cartWindow.classList.remove('show');
@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Funciones de carrito ya existentes
     function addToCart(item) {
         const cart = getCart(); // Obtener el carrito desde localStorage
         let itemExists = false;
