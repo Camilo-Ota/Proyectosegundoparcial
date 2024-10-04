@@ -6,6 +6,17 @@
     <title>Restaurant Menu</title>
     <link rel="stylesheet" href="cuadricula.css">
     <link rel="stylesheet" href="carrito.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -14,64 +25,35 @@
                 <h1>UrbanBites</h1>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="entradas.html">Entradas</a></li>
-                    <li><a href="principales.html">Platos Principales</a></li>
-                    <li><a href="bebidas.html">Bebidas</a></li>
-                    <li><a href="postres.html">Postres</a></li>
+                    <li><a href="entradas.html?categoria=entradas">Entradas</a></li>
+                    <li><a href="principales.html?categoria=principales">Platos Principales</a></li>
+                    <li><a href="bebidas.html?categoria=bebidas">Bebidas</a></li>
+                    <li><a href="postres.html?categoria=postres">Postres</a></li>
                     <li><a href="equipo.html">Equipo desarrollador</a></li>
                 </ul>
+                <div id="cart-icon" style="cursor: pointer;">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                    </svg>
+                </div>
             </nav>
-
-            <div id="cart-icon" style="cursor: pointer;">
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-                </svg>
-            </div>            
-
             <div id="barranavegacion_celular">
-                  <ul>
+                <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="entradas.html">Entradas</a></li>
-                    <li><a href="principales.html">Platos Principales</a></li>
-                    <li><a href="bebidas.html">Bebidas</a></li>
-                    <li><a href="postres.html">Postres</a></li>
+                    <li><a href="entradas.html?categoria=entradas">Entradas</a></li>
+                    <li><a href="principales.html?categoria=principales">Platos Principales</a></li>
+                    <li><a href="bebidas.html?categoria=bebidas">Bebidas</a></li>
+                    <li><a href="postres.html?categoria=postres">Postres</a></li>
                     <li><a href="equipo.html">Equipo desarrollador</a></li>
                 </ul>
-    
             </div>
         </div>
     </header>
     <main>
         <section class="menu">
-            <h2>Entradas</h2>
+            <h2>Postres</h2>
             <div class="grid">
-                <div class="grid-item">
-                    <div class="img-container">
-                        <img src="./imagenes/vainilla.jpg" alt="dhelado de vainilla">
-                    </div>
-                    <h3>Helado de vainilla</h3>
-                    <p>Tres bolas de helado de vainilla</p>
-                    <p>$5.000</p>
-                    <button class="add-to-cart" data-id="16" data-name="Vainilla" data-price="5000">Añadir al carrito</button>
-                </div>
-                <div class="grid-item">
-                    <div class="img-container">
-                        <img src="./imagenes/brownie.JPG" alt="brownie con helado">
-                    </div>
-                    <h3>Brownie con helado</h3>
-                    <p>Helado de avellanas encima de un brownie de chocolate</p>
-                    <p>$7.000</p>
-                    <button class="add-to-cart" data-id="17" data-name="Brownie" data-price="7000">Añadir al carrito</button>
-                </div>
-                <div class="grid-item">
-                    <div class="img-container">
-                        <img src="./imagenes/gelatina.JPG" alt="gelatina">
-                    </div>
-                    <h3>Gelatina</h3>
-                    <p>Gelatina de sabores con frutas</p>
-                    <p>$10.000</p>
-                    <button class="add-to-cart" data-id="13" data-name="Gelatina" data-price="10000">Añadir al carrito</button>
-                </div>
+                <!-- Los productos se cargarán aquí -->
             </div>
         </section>
 
@@ -79,20 +61,32 @@
             <div id="cart">
                 <h2>Carrito de compras</h2>
                 <div id="cart-items">
-                    
+                    <!-- Los elementos del carrito se cargarán aquí -->
                 </div>
                 <div id="cart-total">
-                    <div id="cart-total">
-                        <p><strong>Total</strong></p>
-                        <p id="total-amount">$0</p>
-                    </div>
-                    
+                    <p><strong>Total</strong></p>
+                    <p id="total-amount">$0</p>
                 </div>
+                <form id="pedido-form">
+
+                    <h3>Información del Cliente</h3>
+
+                    <label for="nombre">Nombre del Cliente:</label>
+                    <input type="text" id="nombre" name="nombre" required><br><br>
+                    
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required><br><br>
+                    
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required><br><br>
+                    
+                    <button type="submit">Enviar Pedido</button>
+                  </form>
+                
                 <button id="close-cart">Cerrar</button>
             </div>
         </div>
     </main>
     <script src="script.js"></script>
-    <script src="cart.js"></script>
 </body>
 </html>

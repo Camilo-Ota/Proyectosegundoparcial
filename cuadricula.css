@@ -1,14 +1,23 @@
-/* HEADER FIJO */
+body{
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    overflow-x: hidden;
+}
+
+body h1{
+    font-family:'Dancing Script';
+}
+
+
 #barranavegacion {
     display: flex;
     justify-content: space-around;
 }
 
-#barranavegacion h1 {
+#barranavegacion h1{
     color: orange;
     font-size: 1.8rem;
     text-shadow: 2px 2px 2px #000;
-    font-family: 'Dancing Script';
+    font-family:'Dancing Script';
 }
 
 #barranavegacion ul {
@@ -90,7 +99,7 @@ body {
 
 header {
     background-color: #333;
-    color: #fff;
+    color: #ffffff;
     padding: 1em;
     text-align: center;
     position: relative;
@@ -142,6 +151,7 @@ header {
 .grid-item h3 {
     margin-top: 0;
 }
+
 
 .add-to-cart {
     background-color: #4CAF50;
