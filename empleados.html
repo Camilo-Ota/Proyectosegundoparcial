@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Menu</title>
+    <title>Login</title>
     <link rel="stylesheet" href="cuadricula.css">
     <link rel="stylesheet" href="carrito.css">
 
@@ -16,7 +16,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <header>
@@ -46,49 +45,18 @@
                     <li><a href="bebidas.html?categoria=bebidas">Bebidas</a></li>
                     <li><a href="postres.html?categoria=postres">Postres</a></li>
                     <li><a href="equipo.html">Equipo desarrollador</a></li>
-                    <li><a href="empleados.html">Empleados</a></li>
                 </ul>
             </div>
         </div>
     </header>
-    <main>
-        <section class="menu">
-            <h2>Postres</h2>
-            <div class="grid">
-                <!-- Los productos se cargarán aquí -->
-            </div>
-        </section>
-
-        <div id="cart-window" class="hidden">
-            <div id="cart">
-                <h2>Carrito de compras</h2>
-                <div id="cart-items">
-                    <!-- Los elementos del carrito se cargarán aquí -->
-                </div>
-                <div id="cart-total">
-                    <p><strong>Total</strong></p>
-                    <p id="total-amount">$0</p>
-                </div>
-                <form id="pedido-form">
-
-                    <h3>Información del Cliente</h3>
-
-                    <label for="nombre">Nombre del Cliente:</label>
-                    <input type="text" id="nombre" name="nombre" required><br><br>
-                    
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" required><br><br>
-                    
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" id="direccion" name="direccion" required><br><br>
-                    
-                    <button type="submit">Enviar Pedido</button>
-                  </form>
-                
-                <button id="close-cart">Cerrar</button>
-            </div>
-        </div>
+    <main class="login-container">
+        <h2>Login de Empleado</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuario" required class="login-input"><br><br>
+            <input type="password" id="password" placeholder="Contraseña" required class="login-input"><br><br>
+            <button type="submit" class="login-button">Iniciar Sesión</button>
+        </form>
     </main>
-    <script src="script.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+    <link rel="stylesheet" href="cuadricula.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="barranavegacion">
+            <h1>UrbanBites - Gestión de Pedidos</h1>
+            <ul>
+                <li><a href="index.html" id="logout-btn">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header> 
+    <main>
+        <h2>Lista de Pedidos</h2>
+        <div class="filters">
+            <label for="filter-status">Filtrar por estado:</label>
+            <select id="filter-status">
+                <option value="all">Todos</option>
+                <option value="pending">Pendiente</option>
+                <option value="completed">Atendido</option>
+            </select>
+            <button id="filter-btn">Filtrar</button>
+
+            <label for="filter-client">Filtrar por cliente:</label>
+            <input type="text" id="filter-client" placeholder="Nombre del cliente">
+
+            <button id="filter-btn">Filtrar</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Pedido</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="orders-table">
+                <!-- Aquí se cargarán los pedidos dinámicamente -->
+            </tbody>
+        </table>
+    </main>
+    <script src="gestion-pedidos.js"></script>
+</body>
+</html>

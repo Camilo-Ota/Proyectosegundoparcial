@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para obtener los productos desde la API usando async/await
     async function loadProducts(categoria) {
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec');
+            const response = await fetch('http://127.0.0.1:8000/api/productos');
             const data = await response.json(); //Conversión a JSON
-            const productos = data.data; // Asumimos que los productos están en "data.data"
+            const productos = data; // Asumimos que los productos están en "data.data"
             const filteredProducts = categoria ? productos.filter(producto => producto.Categoria === categoria) : productos;
             renderProducts(filteredProducts); // Mostrar los productos filtrados
         } catch (error) {
@@ -143,22 +143,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Integración del formulario de pedido
     document.getElementById('pedido-form').addEventListener('submit', async function(event) {
         event.preventDefault();
-
+    
         // Captura datos del cliente
         const nombreCliente = document.getElementById('nombre').value;
         const telefonoCliente = document.getElementById('telefono').value;
         const direccionCliente = document.getElementById('direccion').value;
-
+    
         // Obtiene los productos desde el carrito
         const productos = getCart().map(item => ({
             id: item.id,
             precio: parseFloat(item.price),
             cantidad: item.quantity
         }));
-
+    
         // Calcular el valor total del pedido
         const valorTotal = calculateTotal(getCart());
-
+    
         // Crear objeto de pedido
         const pedido = {
             nombre: nombreCliente,
@@ -167,28 +167,33 @@ document.addEventListener('DOMContentLoaded', () => {
             productos: productos,
             valorTotal: valorTotal
         };
-
-        // Enviar el pedido a la API con async/await
+    
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbxdSDNS5v78FkwcLn6gJsNsl3XaWQ9RbtAE581ARfipm6DhEjR47aZIf_x0rZjkEuCZ/exec', {
+            // Cambia la URL al endpoint de tu API Laravel
+            const response = await fetch('http://127.0.0.1:8000/api/pedidos', {
                 method: 'POST',
                 body: JSON.stringify(pedido),
                 headers: {
                     'Content-Type': 'application/json'
-                },
-                mode: 'no-cors' // Agregar el modo 'no-cors'
+                }
             });
-
-            console.log('Pedido enviado');
-            alert('Pedido enviado exitosamente');
-            clearCart(); // Limpiar el carrito después de enviar el pedido
-            updateCartUI(); // Actualizar la interfaz
+    
+            if (response.ok) {
+                const data = await response.json();
+                alert('Pedido enviado exitosamente');
+                console.log('Respuesta de la API:', data);
+                clearCart(); // Vaciar el carrito
+                updateCartUI(); // Actualizar la UI
+            } else {
+                console.error('Error en la respuesta de la API:', response.statusText);
+                alert('Error al enviar el pedido');
+            }
         } catch (error) {
             console.error('Error al enviar el pedido:', error);
             alert('Error al enviar el pedido');
         }
-        
     });
+    
 
     // Función para vaciar el carrito
     function clearCart() {
@@ -197,3 +202,4 @@ document.addEventListener('DOMContentLoaded', () => {
         totalElement.textContent = '$0';
     }
 });
+

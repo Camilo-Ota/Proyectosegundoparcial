@@ -263,3 +263,202 @@ header {
     color: #666; 
     margin: 5px 0; 
 }
+
+/* Estilos para el contenedor principal del login */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff7e8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del login */
+.login-container h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: orange;
+    text-shadow: 1px 1px 2px #000;
+    margin-bottom: 20px;
+}
+
+/* Inputs del formulario */
+.login-input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+/* Botón del login */
+.login-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover en el botón */
+.login-button:hover {
+    background-color: #3e8e41;
+}
+
+
+/* Estilos para la página de gestión de pedidos */
+main {
+    padding: 20px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    color: orange;
+    text-shadow: 1px 1px 2px #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Filtros de búsqueda */
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filters label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.filters select, .filters button {
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filters button {
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.filters button:hover {
+    background-color: #3e8e41;
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 16px;
+}
+
+table th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td button {
+    background-color: #f4a261;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-size: 14px;
+}
+
+table td button:hover {
+    background-color: #e07b47;
+}
+
+/* Estilos del encabezado de la página */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: orange;
+    text-shadow: 2px 2px 2px #000;
+}
+
+/* Estilos de la navegación */
+#barranavegacion ul {
+    display: flex;
+    justify-content: center;
+}
+
+#barranavegacion ul li {
+    list-style: none;
+    padding: 10px 15px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+#barranavegacion ul li:hover {
+    background-color: orangered;
+    cursor: pointer;
+}
+
+#barranavegacion ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* Estilo responsive para móviles */
+@media only screen and (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    table th, table td {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
